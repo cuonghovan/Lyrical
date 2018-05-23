@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import { withRouter, Link } from 'react-router-dom';
 
 class SongCreate extends React.Component {
 
@@ -19,12 +20,13 @@ class SongCreate extends React.Component {
       variables: {
         title: this.state.title
       }
-    });
+    }).then(() => this.props.history.push('/'));
   }
 
   render() {
     return(
       <div>
+        <Link to='/'>Back</Link>
         <h3>Create new form</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>Song title</label>
@@ -46,4 +48,4 @@ const mutation = gql`
   }
 `;
 
-export default graphql(mutation)(SongCreate);
+export default graphql(mutation)(withRouter(SongCreate));
