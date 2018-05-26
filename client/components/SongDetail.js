@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
 import fetchSongQuery from '../queries/fetchSong';
+import LyricCreate from './LyricCreate';
 
 class SongDetail extends React.Component {
 
@@ -20,6 +21,7 @@ class SongDetail extends React.Component {
       <div>
         <Link to='/'>Back</Link>
         <h3>{song.title}</h3>
+        <LyricCreate songId={song.id} {...this.props}/>
       </div>
     );
   }
