@@ -32,7 +32,8 @@ class LyricCreate extends React.Component {
         <label>Add lyric</label>
         <input 
           type='text'
-          onChange={event => this.setState({lyric: event.target.value})}
+          onChange={event => this.setState({content: event.target.value})}
+          value={this.state.content}
         />
       </form>
     );
