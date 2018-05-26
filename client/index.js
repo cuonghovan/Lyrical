@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
-import { HashRouter, Route, IndexRoute } from 'react-router-dom';
+import { HashRouter, Route, IndexRoute, Switch } from 'react-router-dom';
 import SongList from './components/SongList';
 import SongCreate from './components/SongCreate';
 import SongDetail from './components/SongDetail';
@@ -15,9 +15,11 @@ const Root = () => {
     <ApolloProvider client={apolloClient}>
       <HashRouter>
         <div className='container'>
-          <Route exact path='/' component={SongList} />
-          <Route path='/songs/new' component={SongCreate} />
-          <Route path='/songs/:id' component={SongDetail} />
+          <Switch>
+            <Route exact path='/' component={SongList} />
+            <Route path='/songs/new' component={SongCreate} />
+            <Route path='/songs/:id' component={SongDetail} />
+          </Switch>
         </div>
       </HashRouter>
     </ApolloProvider>
