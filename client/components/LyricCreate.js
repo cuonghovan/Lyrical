@@ -22,7 +22,6 @@ class LyricCreate extends React.Component {
         content: this.state.content
       }
     })
-    .then(() => this.props.data.refetch())
     .then(() => this.setState({content: ''}));
   }
 
@@ -46,6 +45,7 @@ const mutation = gql`
       id,
       title,
       lyrics {
+        id,
         content
       }
     }
